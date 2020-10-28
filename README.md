@@ -3,12 +3,12 @@
 
 # 分层API
 Flink 根据抽象程度分层，提供了三种不同的 API。每一种 API 在简洁性和表达力上有着不同的侧重，并且针对不同的应用场景。
-<div align=center><img width="399" height="502" src="https://github.com/handsomestWei/flink-word-count/blob/main/design/flink-api.png" /></div>
+<div align=center><img width="506" height="178" src="https://github.com/handsomestWei/flink-word-count/blob/main/design/flink-api.png" /></div>
 
 # Usage
 
 ## 使用table api
-[Code Link](https://github.com/handsomestWei/flink-word-count/blob/main/com/wjy/flink/wc/table/WordCount.java)
+[Code Link](https://github.com/handsomestWei/flink-word-count/blob/main/src/main/java/com/wjy/flink/wc/table/WordCount.java)
 ### 定义表结构
 ```
 Table wcTable = tEnv.fromDataStream(ds, Expressions.$("word"), Expressions.$("frequency"));
@@ -23,7 +23,7 @@ tEnv.sqlQuery("select word, frequency from word_count ").execute().print();
 ```
 
 ## 使用streaming
-[Code Link](https://github.com/handsomestWei/flink-word-count/blob/main/com/wjy/flink/wc/streaming/WordCount.java)
+[Code Link](https://github.com/handsomestWei/flink-word-count/blob/main/src/main/java/com/wjy/flink/wc/streaming/WordCount.java)
 ### 输入数据源为socket流
 ```
 DataStreamSource<String> textDs = env.socketTextStream(hostName, port, "\n");
@@ -51,7 +51,7 @@ public class StdPrintSink<IN> extends PrintSinkFunction<IN> {
 ```
 
 ## 读写mysql
-[Code Link](https://github.com/handsomestWei/flink-word-count/blob/main/com/wjy/flink/wc/streaming/WordCountV2.java)
+[Code Link](https://github.com/handsomestWei/flink-word-count/blob/main/src/main/java/com/wjy/flink/wc/streaming/WordCountV2.java)
 ### 读取外部配置文件参数
 ```
 // 获取外部参数 --configPath /xxx/xx/config.properties
