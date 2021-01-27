@@ -84,6 +84,7 @@ public class WordCountV2 {
                     }
 
                 })
+                // .addSink(MysqlSinkFactory.createSink(paramFromProps))
                 .addSink(new MysqlSink()); // 数据写入mysql
 
         env.execute("Mysql WordCount");
